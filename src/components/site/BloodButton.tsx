@@ -15,7 +15,15 @@ export function BloodButton(props: Props) {
   const { children, className = "" } = props;
   const text = String(children);
 
-  const inner = <span className="label">{text}</span>;
+  const inner = (
+    <>
+      <span className="corner corner-tl" aria-hidden />
+      <span className="corner corner-tr" aria-hidden />
+      <span className="corner corner-bl" aria-hidden />
+      <span className="corner corner-br" aria-hidden />
+      <span className="label">{text}</span>
+    </>
+  );
 
   const cls = `blood-btn ${className}`;
   if ("to" in props && props.to) return <Link to={props.to} className={cls}>{inner}</Link>;
