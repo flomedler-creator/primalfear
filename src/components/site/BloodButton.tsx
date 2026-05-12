@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useMemo, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 interface BaseProps {
   children: ReactNode;
@@ -15,31 +15,7 @@ export function BloodButton(props: Props) {
   const { children, className = "" } = props;
   const text = String(children);
 
-  // Posiciones aleatorias estables para los goteos de sangre.
-  const drips = useMemo(
-    () =>
-      Array.from({ length: 6 }, (_, i) => ({
-        left: `${10 + i * 14 + Math.random() * 6}%`,
-        height: `${20 + Math.random() * 40}px`,
-        delay: `${Math.random() * 0.4}s`,
-      })),
-    [],
-  );
-
-  const inner = (
-    <>
-      <span className="label">{text}</span>
-      <span className="drips" aria-hidden>
-        {drips.map((d, i) => (
-          <span
-            key={i}
-            className="drip"
-            style={{ left: d.left, height: d.height, animationDelay: d.delay }}
-          />
-        ))}
-      </span>
-    </>
-  );
+  const inner = <span className="label">{text}</span>;
 
   const cls = `blood-btn ${className}`;
   if ("to" in props && props.to) return <Link to={props.to} className={cls}>{inner}</Link>;
