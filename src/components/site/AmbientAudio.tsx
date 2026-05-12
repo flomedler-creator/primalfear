@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import audioSrc from "/audio/ambient-battle.m4a?url";
+
+const audioSrc = "/audio/ambient-battle.m4a";
 
 const STORAGE_KEY = "se_audio_settings_v1";
 const DEFAULT_VOLUME = 0.18;
