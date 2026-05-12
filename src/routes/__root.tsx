@@ -9,7 +9,6 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import { Layout } from "@/components/site/Layout";
 
 function NotFoundComponent() {
   return (
@@ -73,13 +72,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sangre Eterna" },
-      { name: "description", content: "Sangre Eterna — videojuego de fantasía oscura, gore y sangrienta." },
-      { property: "og:title", content: "Sangre Eterna" },
-      { property: "og:description", content: "Videojuego de fantasía oscura: orcos, elfos oscuros, ogros, no-muertos, humanos, elfos del bosque y enanos." },
+      { title: "PrimalFear" },
+      { name: "description", content: "PrimalFear — videojuego de fantasía oscura, gore y sangrienta." },
+      { property: "og:title", content: "PrimalFear" },
+      { property: "og:description", content: "PrimalFear — videojuego de fantasía oscura, gore y sangrienta." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "PrimalFear" },
+      { name: "twitter:description", content: "PrimalFear — videojuego de fantasía oscura, gore y sangrienta." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/10796b60-8fdb-43bc-ade2-6960d98d8711/id-preview-c3a545bb--4af92f6a-bf66-4f53-a789-bf88599a51e7.lovable.app-1778606118095.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/10796b60-8fdb-43bc-ade2-6960d98d8711/id-preview-c3a545bb--4af92f6a-bf66-4f53-a789-bf88599a51e7.lovable.app-1778606118095.png" },
     ],
     links: [
       {
@@ -113,9 +116,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Layout>
-        <Outlet />
-      </Layout>
+      <Outlet />
     </QueryClientProvider>
   );
 }
