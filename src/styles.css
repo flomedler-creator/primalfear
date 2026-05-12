@@ -308,3 +308,43 @@
 .flicker { animation: flicker 6s infinite; }
 
 a, button { cursor: none; }
+
+/* ===== Ambient audio slider ===== */
+.ambient-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  height: 18px;
+  cursor: none;
+}
+.ambient-slider::-webkit-slider-runnable-track {
+  height: 2px;
+  background: linear-gradient(to right, var(--blood) 0%, var(--blood-deep) 100%);
+  border-radius: 2px;
+}
+.ambient-slider::-moz-range-track {
+  height: 2px;
+  background: linear-gradient(to right, var(--blood) 0%, var(--blood-deep) 100%);
+  border-radius: 2px;
+}
+.ambient-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--bone);
+  border: 1px solid var(--blood);
+  box-shadow: 0 0 8px oklch(0.45 0.24 25 / 0.7);
+  cursor: none;
+}
+.ambient-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bone);
+  border: 1px solid var(--blood);
+  box-shadow: 0 0 8px oklch(0.45 0.24 25 / 0.7);
+  cursor: none;
+}
