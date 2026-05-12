@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Layout } from "@/components/site/Layout";
 import { BloodButton } from "@/components/site/BloodButton";
 
 export const Route = createFileRoute("/contacto")({
@@ -18,8 +17,7 @@ function Contacto() {
   const [sent, setSent] = useState(false);
 
   return (
-    <Layout>
-      <section className="max-w-2xl mx-auto px-6 pt-10 pb-24 text-center">
+    <section className="max-w-2xl mx-auto px-6 pt-10 pb-24 text-center">
         <h1 className="font-display text-5xl sm:text-6xl bleed-text">Únete al Pacto</h1>
         <p className="mt-6 text-foreground/85 leading-relaxed">
           Inscríbete para recibir noticias del desarrollo y acceso anticipado a
@@ -56,7 +54,6 @@ function Contacto() {
             </div>
           </form>
         )}
-      </section>
-    </Layout>
+    </section>
   );
 }

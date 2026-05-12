@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Layout } from "@/components/site/Layout";
 import { FactionCard } from "@/components/site/FactionCard";
 import { factions } from "@/lib/factions";
 
@@ -35,7 +34,7 @@ function SectionGrid({ title, subtitle, side }: { title: string; subtitle: strin
 
 function Facciones() {
   return (
-    <Layout>
+    <>
       <div className="text-center px-6 pt-10 pb-6">
         <h1 className="font-display text-5xl sm:text-6xl bleed-text">Facciones</h1>
         <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
@@ -44,6 +43,6 @@ function Facciones() {
       </div>
       <SectionGrid title="La Oscuridad" subtitle="LOS QUE DEVORAN" side="oscuridad" />
       <SectionGrid title="La Luz" subtitle="LOS QUE RESISTEN" side="luz" />
-    </Layout>
+    </>
   );
 }
