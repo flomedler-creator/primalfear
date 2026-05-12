@@ -5,6 +5,7 @@ import undead from "@/assets/faction-undead.jpg";
 import human from "@/assets/faction-human.jpg";
 import woodelf from "@/assets/faction-woodelf.jpg";
 import dwarf from "@/assets/faction-dwarf.jpg";
+import varkun from "@/assets/faction-varkun.jpg";
 
 export type Side = "oscuridad" | "luz";
 
@@ -80,5 +81,14 @@ export const factions: Faction[] = [
     description:
       "Forjadores de armas legendarias. Tercos como la roca, mortales como la avalancha que los esculpió.",
     image: dwarf,
+  },
+  {
+    id: "varkun",
+    name: "Varkun",
+    side: "luz",
+    tagline: "Carne de tierra, furia primigenia",
+    description:
+      "Humanos primigenios de fuerza descomunal, piel endurecida y raíces brotando de su carne. Tribus salvajes que sangran al bosque y al bosque devuelven la sangre.",
+    image: varkun,
   },
 ];
