@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Layout } from "@/components/site/Layout";
 
 export const Route = createFileRoute("/informacion")({
   component: Informacion,
@@ -40,7 +39,7 @@ const features = [
 
 function Informacion() {
   return (
-    <Layout>
+    <>
       <section className="max-w-5xl mx-auto px-6 pt-10 pb-16 text-center">
         <h1 className="font-display text-5xl sm:text-6xl bleed-text">El Juego</h1>
         <p className="mt-6 text-lg text-foreground/85 leading-relaxed">
@@ -63,6 +62,6 @@ function Informacion() {
           ))}
         </div>
       </section>
-    </Layout>
+    </>
   );
 }

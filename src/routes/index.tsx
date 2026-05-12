@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Layout } from "@/components/site/Layout";
 import { Hero } from "@/components/site/Hero";
 import { FactionCard } from "@/components/site/FactionCard";
 import { BloodButton } from "@/components/site/BloodButton";
@@ -24,7 +23,7 @@ function Index() {
   const light = factions.filter((f) => f.side === "luz").slice(0, 2);
 
   return (
-    <Layout>
+    <>
       <Hero />
 
       <section className="max-w-7xl mx-auto px-6 py-20">
@@ -70,6 +69,6 @@ function Index() {
           </Link>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }
