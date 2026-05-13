@@ -6,8 +6,8 @@ export const Route = createFileRoute("/contacto")({
   component: Contacto,
   head: () => ({
     meta: [
-      { title: "Contacto — Sangre Eterna" },
-      { name: "description", content: "Únete a la beta cerrada de Sangre Eterna." },
+      { title: "Contacto — Grim Portal" },
+      { name: "description", content: "Únete a la beta cerrada de Grim Portal." },
     ],
   }),
 });

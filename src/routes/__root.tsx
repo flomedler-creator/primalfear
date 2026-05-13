@@ -73,9 +73,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sangre Eterna" },
-      { name: "description", content: "Sangre Eterna — videojuego de fantasía oscura, gore y sangrienta." },
-      { property: "og:title", content: "Sangre Eterna" },
+      { title: "Grim Portal" },
+      { name: "description", content: "Grim Portal — videojuego de fantasía oscura, gore y sangrienta." },
+      { property: "og:title", content: "Grim Portal" },
       { property: "og:description", content: "Videojuego de fantasía oscura: orcos, elfos oscuros, ogros, no-muertos, humanos, elfos del bosque y enanos." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
