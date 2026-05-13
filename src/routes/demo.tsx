@@ -712,6 +712,210 @@ function MapPin({ x, y, title, kind, selected, defeated, label, onClick }: {
 
 /* ----------------- Log tab ----------------- */
 
+/* ----------------- Map scenery (decorative) ----------------- */
+
+function MapScenery() {
+  // Decorative painted-style scenery layer: ground, rivers, mountains,
+  // forests, villages, ruins, gravestones — all in the dark palette.
+  return (
+    <svg
+      viewBox="0 0 100 56"
+      preserveAspectRatio="none"
+      className="absolute inset-0 w-full h-full pointer-events-none"
+    >
+      <defs>
+        <radialGradient id="ground" cx="50%" cy="55%" r="80%">
+          <stop offset="0%" stopColor="#3a2018" stopOpacity="0.95" />
+          <stop offset="55%" stopColor="#1c100d" stopOpacity="1" />
+          <stop offset="100%" stopColor="#08050a" stopOpacity="1" />
+        </radialGradient>
+        <radialGradient id="bloodMoon" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#7a1a1a" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#7a1a1a" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="river" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#5a1414" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#1a0808" stopOpacity="0.7" />
+        </linearGradient>
+        <pattern id="grain" width="2" height="2" patternUnits="userSpaceOnUse">
+          <rect width="2" height="2" fill="#000" opacity="0.06" />
+          <circle cx="0.4" cy="0.5" r="0.18" fill="#fff" opacity="0.04" />
+        </pattern>
+      </defs>
+
+      {/* Base ground */}
+      <rect width="100" height="56" fill="url(#ground)" />
+      <ellipse cx="50" cy="28" rx="45" ry="22" fill="url(#bloodMoon)" />
+
+      {/* Distant mountain silhouettes (back) */}
+      <path
+        d="M0 24 L8 14 L14 20 L22 10 L30 22 L38 14 L46 22 L54 12 L62 22 L72 14 L82 22 L92 12 L100 22 L100 32 L0 32 Z"
+        fill="#0d0709" opacity="0.9"
+      />
+      {/* Mid mountains */}
+      <path
+        d="M0 30 L10 22 L18 28 L28 18 L36 28 L44 24 L54 30 L64 22 L74 30 L86 24 L100 30 L100 40 L0 40 Z"
+        fill="#160b0c" opacity="0.95"
+      />
+
+      {/* River of blood meandering through the map */}
+      <path
+        d="M-2 38 C 12 34, 22 44, 34 38 S 56 30, 66 36 S 86 44, 102 38 L 102 42 C 86 48, 66 40, 54 44 S 22 48, -2 42 Z"
+        fill="url(#river)"
+      />
+      <path
+        d="M-2 38 C 12 34, 22 44, 34 38 S 56 30, 66 36 S 86 44, 102 38"
+        stroke="#8b1d1d" strokeWidth="0.25" fill="none" opacity="0.55"
+      />
+
+      {/* Dead forests (clusters of triangular trees) */}
+      <ForestCluster cx={18} cy={18} count={9} />
+      <ForestCluster cx={66} cy={16} count={11} />
+      <ForestCluster cx={28} cy={48} count={8} />
+      <ForestCluster cx={82} cy={50} count={7} />
+      <ForestCluster cx={48} cy={20} count={5} dim />
+
+      {/* Villages (huts) */}
+      <Village cx={50} cy={32} houses={5} />
+      <Village cx={10} cy={46} houses={3} dim />
+      <Village cx={92} cy={32} houses={3} dim />
+
+      {/* Ruins / standing stones */}
+      <RuinCluster cx={40} cy={42} />
+      <RuinCluster cx={74} cy={44} />
+
+      {/* Graveyard near catacombs */}
+      <Graveyard cx={48} cy={50} />
+
+      {/* Crows (silhouettes) */}
+      <g fill="#000" opacity="0.7">
+        <path d="M22 8 q1 -0.6 2 0 q1 -0.6 2 0" stroke="#000" strokeWidth="0.2" fill="none" />
+        <path d="M58 6 q1 -0.6 2 0 q1 -0.6 2 0" stroke="#000" strokeWidth="0.2" fill="none" />
+        <path d="M78 10 q1 -0.6 2 0 q1 -0.6 2 0" stroke="#000" strokeWidth="0.2" fill="none" />
+      </g>
+
+      {/* Fog overlays */}
+      <ellipse cx="20" cy="40" rx="30" ry="6" fill="#0a0608" opacity="0.55" />
+      <ellipse cx="80" cy="42" rx="28" ry="5" fill="#0a0608" opacity="0.5" />
+
+      {/* Grain */}
+      <rect width="100" height="56" fill="url(#grain)" opacity="0.6" />
+      {/* Vignette */}
+      <rect width="100" height="56" fill="black" opacity="0.0" />
+    </svg>
+  );
+}
+
+function ForestCluster({ cx, cy, count, dim }: { cx: number; cy: number; count: number; dim?: boolean }) {
+  const trees = Array.from({ length: count }, (_, i) => {
+    const angle = (i / count) * Math.PI * 2;
+    const r = 1.5 + (i % 3) * 1.2;
+    const x = cx + Math.cos(angle) * r + ((i * 7) % 5) * 0.3;
+    const y = cy + Math.sin(angle) * r * 0.55 + ((i * 3) % 4) * 0.2;
+    const h = 1.6 + ((i * 11) % 5) * 0.25;
+    return { x, y, h, key: i };
+  });
+  return (
+    <g opacity={dim ? 0.55 : 0.95}>
+      {trees.map((t) => (
+        <g key={t.key}>
+          {/* trunk */}
+          <rect x={t.x - 0.07} y={t.y - 0.1} width="0.14" height={t.h * 0.4} fill="#0a0606" />
+          {/* canopy as triangle stack */}
+          <path
+            d={`M${t.x} ${t.y - t.h} L${t.x - t.h * 0.5} ${t.y} L${t.x + t.h * 0.5} ${t.y} Z`}
+            fill="#0e1a10"
+            stroke="#000"
+            strokeWidth="0.06"
+          />
+          <path
+            d={`M${t.x} ${t.y - t.h * 0.7} L${t.x - t.h * 0.4} ${t.y - t.h * 0.1} L${t.x + t.h * 0.4} ${t.y - t.h * 0.1} Z`}
+            fill="#152418"
+            opacity="0.85"
+          />
+        </g>
+      ))}
+    </g>
+  );
+}
+
+function Village({ cx, cy, houses, dim }: { cx: number; cy: number; houses: number; dim?: boolean }) {
+  const arr = Array.from({ length: houses }, (_, i) => {
+    const angle = (i / houses) * Math.PI * 2;
+    const r = 1.6 + (i % 2) * 0.6;
+    const x = cx + Math.cos(angle) * r;
+    const y = cy + Math.sin(angle) * r * 0.6;
+    return { x, y, key: i, smoke: i % 2 === 0 };
+  });
+  return (
+    <g opacity={dim ? 0.7 : 1}>
+      {arr.map((h) => (
+        <g key={h.key}>
+          {/* house body */}
+          <rect x={h.x - 0.45} y={h.y - 0.2} width="0.9" height="0.6" fill="#1a0e0a" stroke="#000" strokeWidth="0.05" />
+          {/* roof */}
+          <path
+            d={`M${h.x - 0.55} ${h.y - 0.2} L${h.x} ${h.y - 0.7} L${h.x + 0.55} ${h.y - 0.2} Z`}
+            fill="#2b1410"
+            stroke="#000"
+            strokeWidth="0.06"
+          />
+          {/* tiny ember window */}
+          <rect x={h.x - 0.08} y={h.y} width="0.16" height="0.16" fill="#c9531a" opacity="0.85" />
+          {/* smoke */}
+          {h.smoke && (
+            <path
+              d={`M${h.x} ${h.y - 0.7} q0.3 -0.5 0 -1.2 q-0.3 -0.5 0 -1`}
+              stroke="#3a2a26"
+              strokeWidth="0.18"
+              fill="none"
+              opacity="0.55"
+            />
+          )}
+        </g>
+      ))}
+    </g>
+  );
+}
+
+function RuinCluster({ cx, cy }: { cx: number; cy: number }) {
+  return (
+    <g opacity="0.75">
+      <rect x={cx - 1.2} y={cy - 1.4} width="0.4" height="1.8" fill="#1a1614" stroke="#000" strokeWidth="0.05" />
+      <rect x={cx - 0.4} y={cy - 1.0} width="0.4" height="1.4" fill="#1a1614" stroke="#000" strokeWidth="0.05" />
+      <rect x={cx + 0.4} y={cy - 1.6} width="0.4" height="2.0" fill="#1a1614" stroke="#000" strokeWidth="0.05" />
+      <rect x={cx + 1.2} y={cy - 0.8} width="0.4" height="1.2" fill="#1a1614" stroke="#000" strokeWidth="0.05" />
+      {/* fallen lintel */}
+      <rect x={cx - 1.4} y={cy - 1.6} width="3.4" height="0.18" fill="#0e0c0a" />
+    </g>
+  );
+}
+
+function Graveyard({ cx, cy }: { cx: number; cy: number }) {
+  const stones = [
+    { x: -1.5, y: 0, h: 0.7 },
+    { x: -0.7, y: 0.2, h: 0.5 },
+    { x: 0.1, y: 0, h: 0.8 },
+    { x: 0.9, y: 0.3, h: 0.55 },
+    { x: 1.7, y: 0, h: 0.7 },
+  ];
+  return (
+    <g opacity="0.85">
+      {stones.map((s, i) => (
+        <path
+          key={i}
+          d={`M${cx + s.x - 0.25} ${cy + s.y} v${-s.h} a0.25 0.25 0 0 1 0.5 0 v${s.h} z`}
+          fill="#1f1a18"
+          stroke="#000"
+          strokeWidth="0.05"
+        />
+      ))}
+    </g>
+  );
+}
+
+/* ----------------- Log tab redux ----------------- */
+
 function LogTab({ state }: { state: GameState }) {
   return (
     <div className="runic-card p-5">
