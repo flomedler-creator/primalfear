@@ -19,9 +19,9 @@ export function Hero() {
           UN VIDEOJUEGO DE GUERRA OSCURA
         </p>
         <h1 className="bleed-text font-display text-5xl sm:text-7xl md:text-8xl leading-[0.95]">
-          Sangre
+          Grim
           <br />
-          Eterna
+          Portal
         </h1>
         <p className="mt-8 text-lg sm:text-xl text-foreground/85 max-w-2xl mx-auto leading-relaxed">
           Cuando la última luna sangre, las hordas marcharán. Elige tu bando entre
@@ -30,7 +30,7 @@ export function Hero() {
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <BloodButton to="/facciones">Explorar Facciones</BloodButton>
-          <BloodButton to="/informacion">El Mundo</BloodButton>
+          <BloodButton to="/demo">Jugar Demo</BloodButton>
         </div>
       </div>
 
