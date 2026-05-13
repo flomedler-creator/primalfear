@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as InformacionRouteImport } from './routes/informacion'
 import { Route as FaccionesRouteImport } from './routes/facciones'
+import { Route as DemoRouteImport } from './routes/demo'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -30,6 +31,11 @@ const FaccionesRoute = FaccionesRouteImport.update({
   path: '/facciones',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactoRoute = ContactoRouteImport.update({
   id: '/contacto',
   path: '/contacto',
@@ -44,6 +50,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
+  '/demo': typeof DemoRoute
   '/facciones': typeof FaccionesRoute
   '/informacion': typeof InformacionRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
+  '/demo': typeof DemoRoute
   '/facciones': typeof FaccionesRoute
   '/informacion': typeof InformacionRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -59,19 +67,33 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
+  '/demo': typeof DemoRoute
   '/facciones': typeof FaccionesRoute
   '/informacion': typeof InformacionRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contacto' | '/facciones' | '/informacion' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/contacto'
+    | '/demo'
+    | '/facciones'
+    | '/informacion'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contacto' | '/facciones' | '/informacion' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/contacto'
+    | '/demo'
+    | '/facciones'
+    | '/informacion'
+    | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
     | '/contacto'
+    | '/demo'
     | '/facciones'
     | '/informacion'
     | '/sitemap.xml'
@@ -80,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactoRoute: typeof ContactoRoute
+  DemoRoute: typeof DemoRoute
   FaccionesRoute: typeof FaccionesRoute
   InformacionRoute: typeof InformacionRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -108,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaccionesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contacto': {
       id: '/contacto'
       path: '/contacto'
@@ -128,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactoRoute: ContactoRoute,
+  DemoRoute: DemoRoute,
   FaccionesRoute: FaccionesRoute,
   InformacionRoute: InformacionRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
