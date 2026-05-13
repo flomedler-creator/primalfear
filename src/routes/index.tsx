@@ -8,11 +8,11 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Sangre Eterna — Videojuego de fantasía oscura" },
+      { title: "Grim Portal — Videojuego de fantasía oscura" },
       {
         name: "description",
         content:
-          "Sangre Eterna: un videojuego de fantasía oscura y gore. Orcos sanguinarios, elfos oscuros, ogros devoradores y no-muertos contra humanos, elfos del bosque y enanos.",
+          "Grim Portal: un videojuego de fantasía oscura y gore. Orcos sanguinarios, elfos oscuros, ogros devoradores y no-muertos contra humanos, elfos del bosque y enanos.",
       },
     ],
   }),

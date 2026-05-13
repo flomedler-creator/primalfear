@@ -4,8 +4,8 @@ export const Route = createFileRoute("/informacion")({
   component: Informacion,
   head: () => ({
     meta: [
-      { title: "Información — Sangre Eterna" },
-      { name: "description", content: "Sistema de combate, modos de juego y plataformas de Sangre Eterna." },
+      { title: "Información — Grim Portal" },
+      { name: "description", content: "Sistema de combate, modos de juego y plataformas de Grim Portal." },
     ],
   }),
 });
@@ -43,7 +43,7 @@ function Informacion() {
       <section className="max-w-5xl mx-auto px-6 pt-10 pb-16 text-center">
         <h1 className="font-display text-5xl sm:text-6xl bleed-text">El Juego</h1>
         <p className="mt-6 text-lg text-foreground/85 leading-relaxed">
-          Sangre Eterna es un MMO-RPG de fantasía oscura desarrollado por veteranos
+          Grim Portal es un MMO-RPG de fantasía oscura desarrollado por veteranos
           del género. Una experiencia brutal, sin censura, donde cada decisión deja
           cicatriz.
         </p>

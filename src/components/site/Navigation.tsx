@@ -5,6 +5,7 @@ const links = [
   { to: "/", label: "Inicio" },
   { to: "/facciones", label: "Facciones" },
   { to: "/informacion", label: "Información" },
+  { to: "/demo", label: "Demo" },
   { to: "/contacto", label: "Contacto" },
 ] as const;
 
@@ -26,7 +27,7 @@ export function Navigation() {
             <path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z" />
           </svg>
           <span className="font-display text-lg tracking-[0.25em] text-bone drop-shadow-[2px_2px_0_rgba(0,0,0,0.9)]">
-            SANGRE&nbsp;<span className="text-blood">ETERNA</span>
+            GRIM&nbsp;<span className="text-blood">PORTAL</span>
           </span>
         </Link>
 

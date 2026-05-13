@@ -6,11 +6,11 @@ export const Route = createFileRoute("/facciones")({
   component: Facciones,
   head: () => ({
     meta: [
-      { title: "Facciones — Sangre Eterna" },
+      { title: "Facciones — Grim Portal" },
       {
         name: "description",
         content:
-          "Conoce las facciones de Sangre Eterna: orcos, elfos oscuros, ogros, no-muertos, humanos, elfos del bosque y enanos.",
+          "Conoce las facciones de Grim Portal: orcos, elfos oscuros, ogros, no-muertos, humanos, elfos del bosque y enanos.",
       },
     ],
   }),

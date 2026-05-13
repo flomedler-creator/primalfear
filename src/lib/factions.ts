@@ -16,6 +16,7 @@ export interface Faction {
   tagline: string;
   description: string;
   image: string;
+  glyph: string;
 }
 
 export const factions: Faction[] = [
@@ -27,6 +28,7 @@ export const factions: Faction[] = [
     description:
       "Hordas de músculo y odio. Sus hachas mellan huesos antes de salir el sol y beben de las heridas que abren.",
     image: orc,
+    glyph: "☠",
   },
   {
     id: "elfos-oscuros",
@@ -36,6 +38,7 @@ export const factions: Faction[] = [
     description:
       "Maestros del veneno y la traición. Sonríen mientras te apuñalan y susurran maldiciones en lenguas muertas.",
     image: darkelf,
+    glyph: "🜏",
   },
   {
     id: "ogros",
@@ -45,6 +48,7 @@ export const factions: Faction[] = [
     description:
       "Marchan masticando lo que arrancan a su paso. Su hambre nunca termina y su risa retumba como avalancha.",
     image: ogre,
+    glyph: "⚔",
   },
   {
     id: "no-muertos",
@@ -54,6 +58,7 @@ export const factions: Faction[] = [
     description:
       "Nigromantes envueltos en gusanos levantan ejércitos del barro y la putrefacción. La muerte es solo el principio.",
     image: undead,
+    glyph: "✟",
   },
   {
     id: "humanos",
@@ -63,6 +68,7 @@ export const factions: Faction[] = [
     description:
       "Caballeros y plebeyos que defienden lo poco que les queda con acero, fe y rabia desesperada.",
     image: human,
+    glyph: "⚜",
   },
   {
     id: "elfos-bosque",
@@ -72,6 +78,7 @@ export const factions: Faction[] = [
     description:
       "Guardianes de los últimos bosques vivos. Cazan en silencio y su puntería no conoce el perdón.",
     image: woodelf,
+    glyph: "❦",
   },
   {
     id: "enanos",
@@ -81,6 +88,7 @@ export const factions: Faction[] = [
     description:
       "Forjadores de armas legendarias. Tercos como la roca, mortales como la avalancha que los esculpió.",
     image: dwarf,
+    glyph: "⛏",
   },
   {
     id: "varkun",
@@ -90,5 +98,8 @@ export const factions: Faction[] = [
     description:
       "Humanos primigenios de fuerza descomunal, piel endurecida y raíces brotando de su carne. Tribus salvajes que sangran al bosque y al bosque devuelven la sangre.",
     image: varkun,
+    glyph: "᛭",
   },
 ];
+
+export const factionById = (id: string) => factions.find((f) => f.id === id)!;
