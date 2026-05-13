@@ -623,17 +623,18 @@ function WorldMap({ state, zoneKey, setZoneKey }: {
           </p>
         )}
       </div>
-      <div className="relative w-full overflow-hidden rounded-sm border border-border" style={{ aspectRatio: "16 / 9", background: "radial-gradient(ellipse at 50% 50%, rgba(80,20,20,0.35), rgba(15,8,10,0.95) 70%), repeating-linear-gradient(45deg, rgba(120,60,50,0.04) 0 2px, transparent 2px 8px)" }}>
+      <div className="world-map relative w-full overflow-hidden rounded-sm border border-border" style={{ aspectRatio: "16 / 9" }}>
+        <MapScenery />
         {/* path SVG */}
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full pointer-events-none">
           {ZONES.map(z => (
             <line key={z.key} x1={village.x} y1={village.y} x2={z.x} y2={z.y}
-              stroke={z.boss ? "rgba(180,30,30,0.35)" : "rgba(180,150,120,0.18)"}
-              strokeWidth={0.25} strokeDasharray="1.2 1.2" />
+              stroke={z.boss ? "rgba(180,30,30,0.45)" : "rgba(200,170,130,0.28)"}
+              strokeWidth={0.3} strokeDasharray="1.4 1.4" />
           ))}
           {exp && expZone && (
             <line x1={village.x} y1={village.y} x2={expZone.x} y2={expZone.y}
-              stroke="rgba(220,40,40,0.85)" strokeWidth={0.5} strokeDasharray="2 1" />
+              stroke="rgba(220,40,40,0.9)" strokeWidth={0.55} strokeDasharray="2 1" />
           )}
         </svg>
 
